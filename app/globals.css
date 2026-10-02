@@ -10,3 +10,70 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* Hero background: slow drifting dot pattern, pure CSS. */
+@keyframes hero-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 120px 120px;
+  }
+}
+
+.hero-animated-bg {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 26px 26px;
+  animation: hero-drift 20s linear infinite;
+}
+
+/*
+ * Marquee (carrier logos + testimonials): the content list is duplicated
+ * once in the DOM by the component, and this animation scrolls it exactly
+ * -50% so the loop appears seamless.
+ */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-viewport {
+  overflow: hidden;
+}
+
+.animate-marquee {
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+}
+
+/*
+ * Reduced motion: disable both animations outright and fall back to a real
+ * static layout rather than freezing mid-scroll. The marquee row wraps
+ * normally and the aria-hidden duplicate items (only present for the loop)
+ * are removed from the rendered layout. This is plain CSS so it applies
+ * before hydration, with no JS required.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animated-bg {
+    animation: none;
+  }
+
+  .marquee-viewport {
+    overflow: visible;
+  }
+
+  .animate-marquee {
+    animation: none;
+    transform: none;
+    width: auto;
+    flex-wrap: wrap;
+  }
+
+  .animate-marquee [aria-hidden="true"] {
+    display: none;
+  }
+}

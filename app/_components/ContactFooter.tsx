@@ -1,10 +1,9 @@
 import { Container } from "./Container";
 
-// PLACEHOLDER: replace with real contact details
 const contact = {
-  phone: "(555) 123-4567",
-  email: "hello@maryleedsinsurance.com",
-  location: "Colorado",
+  phone: "970-985-5845",
+  email: "Mary@maryleedsinsurance.com",
+  address: "15614 E Otero Ave, Centennial, CO 80112",
 };
 
 const linkClassName =
@@ -17,16 +16,16 @@ export function ContactFooter() {
         <h2 className="font-heading text-xl font-semibold text-white sm:text-2xl">
           Let&apos;s talk about your coverage
         </h2>
-        <div className="mt-6 flex flex-col gap-2 text-sm text-white/90 sm:flex-row sm:gap-8 sm:text-base">
+        <div className="mt-6 flex flex-col gap-2 text-sm text-white sm:flex-row sm:gap-8 sm:text-base">
           <a href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`} className={linkClassName}>
             {contact.phone}
           </a>
           <a href={`mailto:${contact.email}`} className={linkClassName}>
             {contact.email}
           </a>
-          <span>{contact.location}</span>
+          <span>{contact.address}</span>
         </div>
-        <p className="mt-8 text-xs text-white/70">
+        <p className="mt-8 text-xs text-white/95">
           &copy; {new Date().getFullYear()} Mary Leeds Insurance. All rights
           reserved.
         </p>

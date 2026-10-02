@@ -6,48 +6,42 @@ import { SectionHeading } from "./SectionHeading";
 
 const services = [
   {
-    title: "Corporate Insurance & Claims Navigation",
+    title: "Life Insurance",
     description:
-      "Our primary focus: helping businesses choose the right coverage and guiding you step by step through the claims process when something goes wrong.",
-    imageSeed: "service-corporate",
-    imageAlt:
-      "A business owner and agent reviewing a corporate insurance claim together",
+      "Coverage that protects your family and your business's continuity, explained clearly so you know exactly what you're buying.",
+    imageSeed: "service-life-insurance",
+    imageAlt: "A family reviewing a life insurance policy together at home",
   },
   {
-    title: "Commercial & Agribusiness",
+    title: "Small Business Insurance",
     description:
-      "Coverage built for Colorado businesses and agricultural operations, from equipment and property to liability.",
-    imageSeed: "service-agribusiness",
-    imageAlt: "A Colorado ranch with equipment covered by agribusiness insurance",
+      "Built for growing companies with 10-50 employees, with coverage that scales with your team instead of a generic small-business policy.",
+    imageSeed: "service-small-business",
+    imageAlt: "A small business owner reviewing coverage options with employees nearby",
   },
   {
-    title: "Home & Auto",
+    title: "Property & Casualty",
     description:
-      "Personal coverage that protects what matters most, with a policy that actually matches how you live.",
-    imageSeed: "service-home-auto",
-    imageAlt: "A family home and car protected by a home and auto insurance policy",
+      "Protection for your buildings, equipment, and operations, including coverage built specifically for agricultural property.",
+    imageSeed: "service-property-casualty",
+    imageAlt: "A commercial property and equipment covered by a property and casualty policy",
   },
   {
-    title: "Life & Umbrella",
+    title: "Commercial Insurance",
     description:
-      "Extra protection and peace of mind for you and your family, explained without the jargon.",
-    imageSeed: "service-life-umbrella",
-    imageAlt: "A family enjoying peace of mind under a life and umbrella policy",
+      "Our primary focus: helping mid-market and agricultural businesses choose the right coverage and guiding you step by step through the claims process when something goes wrong.",
+    imageSeed: "service-commercial",
+    imageAlt: "A business owner and agent reviewing a commercial insurance claim together",
   },
-];
-
-const carriers = [
-  "Progressive",
-  "Hartford",
-  "Travelers",
-  "GEICO",
-  "Nationwide",
-  "and 25+ more carrier partners",
 ];
 
 export function Services() {
   return (
-    <section className="bg-white" aria-labelledby="services-heading">
+    <section
+      id="services"
+      className="scroll-mt-20 bg-white"
+      aria-labelledby="services-heading"
+    >
       <Container className="py-16 sm:py-24">
         <FadeInSection>
           <SectionHeading id="services-heading">How we help</SectionHeading>
@@ -75,14 +69,6 @@ export function Services() {
               </li>
             ))}
           </ul>
-          <div className="mt-10">
-            <h3 className="font-heading text-base font-semibold text-primary">
-              Backed by 30+ carrier partners, including
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-gray-700 sm:text-base">
-              {carriers.join(", ")}.
-            </p>
-          </div>
         </FadeInSection>
       </Container>
     </section>
