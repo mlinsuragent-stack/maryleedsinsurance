@@ -28,9 +28,10 @@ body {
 }
 
 /*
- * Marquee (carrier logos + testimonials): the content list is duplicated
- * once in the DOM by the component, and this animation scrolls it exactly
- * -50% so the loop appears seamless.
+ * Marquee (carrier logos + testimonials): the component renders the content
+ * as two identical copies in the DOM (carriers: each copy is 3 passes of the
+ * 5 names), and this animation scrolls exactly -50% (one copy) so the loop
+ * appears seamless.
  */
 @keyframes marquee-scroll {
   from {
@@ -78,6 +79,16 @@ body {
   animation-name: marquee-scroll-third;
   /* Slower than the carrier row (50s) so the long testimonial quotes stay readable. */
   animation-duration: 60s;
+}
+
+/*
+ * Carrier row: each loop copy is 3 passes of the carrier list (see
+ * CarrierMarquee), so the duration is 3 x the base 50s to keep the scroll
+ * speed the same as when a copy was a single pass. Must stay above the
+ * reduced-motion block so `animation: none` there still wins.
+ */
+.marquee-carriers {
+  animation-duration: 150s;
 }
 
 /*

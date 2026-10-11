@@ -64,18 +64,22 @@ export function Hero() {
               ))}
             </ul>
           </div>
-          <div className="w-full max-w-md shrink-0 xl:max-w-lg">
-            {/* 3:4 portrait in a square frame: the width always fills, so
-                only the vertical position matters. object-top keeps the
-                horse's ear tips (at the photo's top edge) plus Mary's cap
-                and face in frame; only the lower quarter is cropped. */}
+          <div className="w-full max-w-110 shrink-0">
+            {/* 3:4 frame for a 3:4 portrait (1932x2576), so object-cover
+                crops almost nothing (~1px per side from the 4px border-box
+                border). The horse's ear tips touch the photo's top edge and
+                Mary's face runs to its right edge, so any frame taller or
+                wider than 3:4 would cut one of them; object-top keeps the
+                top edge if the ratio ever drifts. Capped at 440px (max-w-110)
+                so at lg+ the card is ~440x587, roughly the text column's
+                height at xl. */}
             <Image
               src="/images/mary-horse-buckskin.jpg"
               alt="Mary Leeds in a USA cap taking a selfie beside her buckskin quarter horse under a blue sky"
               width={1932}
               height={2576}
-              sizes="(min-width: 1280px) 32rem, (min-width: 480px) 28rem, calc(100vw - 2rem)"
-              className="aspect-square w-full rounded-lg border-4 border-saddle object-cover object-top shadow-sm"
+              sizes="(min-width: 472px) 440px, calc(100vw - 2rem)"
+              className="aspect-3/4 w-full rounded-lg border-4 border-saddle object-cover object-top shadow-sm"
               priority
             />
           </div>
