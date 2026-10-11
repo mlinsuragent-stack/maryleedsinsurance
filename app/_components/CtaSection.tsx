@@ -1,4 +1,5 @@
 import { AccentButtonLink } from "./AccentButtonLink";
+import { AccentRule } from "./AccentRule";
 import { contactInfo, phoneHref } from "./contact-info";
 import { Container } from "./Container";
 import { FadeInSection } from "./motion/FadeInSection";
@@ -17,6 +18,7 @@ export function CtaSection() {
           <SectionHeading id="cta-heading">
             Ready to talk through your coverage?
           </SectionHeading>
+          <AccentRule align="center" className="mt-3" />
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-gray-700 sm:text-lg">
             No pressure, no jargon &mdash; just a conversation about what you
             actually need.

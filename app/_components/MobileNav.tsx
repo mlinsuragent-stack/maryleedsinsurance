@@ -58,10 +58,13 @@ export function MobileNav({
         </svg>
       </button>
 
+      {/* top-full is the header's padding edge, so the panel covers the
+          header's 3px saddle line and carries its own: one line at the
+          bottom of the whole header while open. */}
       {open && (
         <div
           id="mobile-nav-panel"
-          className="absolute inset-x-0 top-full border-t border-white/10 bg-primary-deep px-4 pb-6 pt-2 shadow-lg"
+          className="absolute inset-x-0 top-full border-t border-b-3 border-white/10 border-b-saddle bg-primary-deep px-4 pb-6 pt-2 shadow-lg"
         >
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (

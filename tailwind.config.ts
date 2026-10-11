@@ -23,6 +23,10 @@ export default {
         "accent-light": "#FFD0A0",
         highlight: "#DB767D",
         surface: "#D3F2E9",
+        // Earth-tone trim: borders/rules only, never text or background
+        // fills (tan on white is 2.35:1, too low for anything meaningful).
+        saddle: "#8B5E3C",
+        tan: "#C9A27C",
       },
       fontFamily: {
         heading: ["var(--font-heading)"],

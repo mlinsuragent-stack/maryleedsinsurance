@@ -1,3 +1,4 @@
+import { AccentRule } from "../../_components/AccentRule";
 import { Container } from "../../_components/Container";
 import { FadeInSection } from "../../_components/motion/FadeInSection";
 import { SectionHeading } from "../../_components/SectionHeading";
@@ -17,6 +18,7 @@ export function ProfessionalSection() {
             <SectionHeading id="professional-heading">
               The professional
             </SectionHeading>
+            <AccentRule className="mt-3" />
             <BioParagraph>
               Born and raised in Colorado, Mary is a lifelong cowgirl with
               decades of experience in the financial services and insurance

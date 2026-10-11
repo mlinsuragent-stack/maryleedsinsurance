@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { AccentRule } from "./AccentRule";
 import { Container } from "./Container";
 
 /**
@@ -9,17 +10,20 @@ import { Container } from "./Container";
  *
  * `children` is an optional aside (e.g. a portrait); when present the
  * header becomes two columns from lg and stacks below the text on mobile.
+ * `accentRule` adds the saddle rule bar under the (left-aligned) h1.
  */
 export function PageHeader({
   eyebrow,
   title,
   subline,
   children,
+  accentRule = false,
 }: {
   eyebrow?: string;
   title: string;
   subline: ReactNode;
   children?: ReactNode;
+  accentRule?: boolean;
 }) {
   return (
     <section
@@ -43,6 +47,9 @@ export function PageHeader({
           >
             {title}
           </h1>
+          {/* mt-4, not the h2s' mt-3: this h1's tighter leading (0-2px
+              half-leading vs 3-4px on h2) leaves the same ~16px visible gap. */}
+          {accentRule && <AccentRule className="mt-4" />}
           <p className="mt-4 text-lg leading-relaxed text-gray-700 sm:text-xl">
             {subline}
           </p>

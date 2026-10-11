@@ -73,7 +73,7 @@ export function validateAll(values: FormValues): FormErrors {
 }
 
 export const inputClassName =
-  "mt-1 w-full rounded-md border border-secondary/30 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40 sm:text-base";
+  "mt-1 w-full rounded-md border border-secondary-dark bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary sm:text-base";
 
 export const labelClassName = "block text-sm font-medium text-gray-900 sm:text-base";
 

@@ -6,14 +6,14 @@ const DEFAULT_SIZES = "(min-width: 1024px) 26rem, (min-width: 640px) 24rem, 20re
 
 // "rounded": soft rounded frame; "arch": semicircular top for the 3:4 intro
 // portrait (see the `arch` radius token in tailwind.config.ts). `aspect-3/4`
-// pins the border box to 3:4; without it the 8px border sits outside the
-// image's 3:4 content box (border box ~0.759) and the top arch flattens.
+// pins the border box to 3:4; without it the 6px tan border sits outside the
+// image's 3:4 content box and the top arch flattens.
 const shapeClassNames = {
   rounded: "rounded-2xl border-4 border-white shadow-lg",
-  arch: "aspect-3/4 rounded-arch border-8 border-white shadow-xl",
+  arch: "aspect-3/4 rounded-arch border-6 border-tan shadow-xl",
 } as const;
 
-/** White-framed, shadowed photo shared by the bio page sections. */
+/** Framed (white, or tan for the arch), shadowed photo for the bio page. */
 export function BioPhoto({
   src,
   alt,

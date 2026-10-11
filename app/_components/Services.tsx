@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AccentRule } from "./AccentRule";
 import { Container } from "./Container";
 import { FadeInSection } from "./motion/FadeInSection";
 import { HoverCard } from "./motion/HoverCard";
@@ -45,10 +46,11 @@ export function Services() {
       <Container className="py-16 sm:py-24">
         <FadeInSection>
           <SectionHeading id="services-heading">How we help</SectionHeading>
+          <AccentRule className="mt-3" />
           <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {services.map((service) => (
               <li key={service.title}>
-                <HoverCard className="h-full overflow-hidden rounded-lg border border-secondary/30 bg-surface transition-shadow duration-200 hover:shadow-lg">
+                <HoverCard className="h-full overflow-hidden rounded-lg border border-tan border-b-3 border-b-saddle bg-surface transition-shadow duration-200 hover:shadow-lg">
                   {/* PLACEHOLDER: replace with real photo */}
                   <Image
                     src={`https://picsum.photos/seed/${service.imageSeed}/400/240`}

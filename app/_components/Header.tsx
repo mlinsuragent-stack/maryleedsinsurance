@@ -25,7 +25,7 @@ const navLinkClassName =
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-linear-to-b from-primary-dark to-primary-deep shadow-sm">
+    <header className="sticky top-0 z-50 border-b-3 border-saddle bg-linear-to-b from-primary-dark to-primary-deep shadow-sm">
       <Container className="flex items-center justify-between py-4">
         <Link
           href="/"

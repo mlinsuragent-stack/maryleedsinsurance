@@ -52,12 +52,12 @@ export function Hero() {
                 4.28:1 but white is 5.09:1 (WCAG AA). */}
             <ul
               aria-label="Why clients trust Mary Leeds Insurance"
-              className="mt-6 flex flex-wrap gap-2"
+              className="mt-6 grid grid-cols-2 gap-2"
             >
               {trustChips.map((chip) => (
                 <li
                   key={chip}
-                  className="rounded-full border border-surface/40 px-3 py-1 text-xs font-medium text-white sm:text-sm"
+                  className="flex items-center justify-center rounded-full border-2 border-saddle px-3 py-1 text-center text-xs font-medium text-white sm:text-sm"
                 >
                   {chip}
                 </li>
@@ -75,7 +75,7 @@ export function Hero() {
               width={1932}
               height={2576}
               sizes="(min-width: 1280px) 32rem, (min-width: 480px) 28rem, calc(100vw - 2rem)"
-              className="aspect-square w-full rounded-lg object-cover object-top shadow-sm"
+              className="aspect-square w-full rounded-lg border-4 border-saddle object-cover object-top shadow-sm"
               priority
             />
           </div>

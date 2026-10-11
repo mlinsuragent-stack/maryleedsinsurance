@@ -6,7 +6,7 @@ const linkClassName =
 
 export function ContactFooter() {
   return (
-    <footer className="bg-primary">
+    <footer className="border-t-3 border-saddle bg-primary">
       <Container className="py-12">
         <h2 className="font-heading text-xl font-semibold text-white sm:text-2xl">
           Let&apos;s talk about your coverage

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cardClassName } from "../../_components/Card";
+import { cardSurfaceClassName } from "../../_components/Card";
 import { type BlogPost, getPostLabel } from "../data";
 
 function formatDate(dateString: string): string {
@@ -20,7 +20,7 @@ export function BlogPostCard({ post }: { post: BlogPost }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className={`group flex h-full flex-col overflow-hidden transition-shadow duration-200 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${cardClassName}`}
+      className={`group flex h-full flex-col overflow-hidden transition-shadow duration-200 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 border border-tan border-b-3 border-b-saddle ${cardSurfaceClassName}`}
     >
       {/* PLACEHOLDER: replace with real post imagery */}
       <Image

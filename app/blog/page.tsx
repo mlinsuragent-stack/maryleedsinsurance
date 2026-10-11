@@ -20,6 +20,7 @@ export default function BlogPage() {
       <main id="main-content" className="flex-1">
         <PageHeader
           title="Insurance, explained"
+          accentRule
           subline="Notes on understanding coverage, navigating claims, and protecting the businesses we work with every day."
         />
         <Container className="pb-16 sm:pb-24">

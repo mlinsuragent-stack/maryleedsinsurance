@@ -1,3 +1,4 @@
+import { AccentRule } from "../../_components/AccentRule";
 import { Container } from "../../_components/Container";
 import { FadeInSection } from "../../_components/motion/FadeInSection";
 import { SectionHeading } from "../../_components/SectionHeading";
@@ -21,6 +22,7 @@ export function PersonalSection() {
             <SectionHeading id="personal-heading">
               A life rooted in family, faith &amp; service
             </SectionHeading>
+            <AccentRule className="mt-3" />
             <BioParagraph>
               As a single mother, Mary raised her daughters while building an
               independent career and a life grounded in faith, family, hard

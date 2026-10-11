@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AccentRule } from "./AccentRule";
 import { Container } from "./Container";
 import { FadeInSection } from "./motion/FadeInSection";
 import { SectionHeading } from "./SectionHeading";
@@ -21,6 +22,7 @@ export function About() {
           </div>
           <div className="max-w-3xl">
             <SectionHeading id="about-heading">Meet Mary Leeds</SectionHeading>
+            <AccentRule className="mt-3" />
             <p className="mt-6 text-base leading-relaxed text-gray-700 sm:text-lg">
               Mary is a Colorado native and the owner of this women-owned
               insurance agency. A lifelong cowgirl, she raised her daughters
