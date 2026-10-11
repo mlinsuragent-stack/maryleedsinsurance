@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { AccentButtonLink } from "./AccentButtonLink";
+import { contactInfo, phoneHref } from "./contact-info";
 import { Container } from "./Container";
 import { MobileNav } from "./MobileNav";
-
-const phone = "970-985-5845";
 
 // Bio, Blog, Reviews, and Contact route to their dedicated pages. Services
 // links to the in-page "#services" section on the homepage rather than a
@@ -17,16 +17,19 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+// Dark teal gradient header, same band as CarrierMarquee/Testimonials.
+// Contrast on primary-dark (the lighter, worst-case end): surface links
+// 7.05:1, white wordmark/hover 8.39:1, white focus ring 8.39:1.
 const navLinkClassName =
-  "rounded-sm text-sm font-medium text-white transition-colors hover:text-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary";
+  "rounded-sm text-sm font-medium text-surface transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-primary shadow-sm">
+    <header className="sticky top-0 z-50 bg-linear-to-b from-primary-dark to-primary-deep shadow-sm">
       <Container className="flex items-center justify-between py-4">
         <Link
           href="/"
-          className="rounded-sm font-heading text-lg font-semibold text-white transition-colors hover:text-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:text-xl"
+          className="rounded-sm font-heading text-lg font-semibold text-white transition-colors hover:text-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark sm:text-xl"
         >
           Mary Leeds Insurance
         </Link>
@@ -40,18 +43,19 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <a href={`tel:${phone.replace(/[^+\d]/g, "")}`} className={navLinkClassName}>
-            {phone}
+          <a href={phoneHref} className={navLinkClassName}>
+            {contactInfo.phone}
           </a>
-          <Link
+          <AccentButtonLink
             href="/contact"
-            className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+            surface="dark"
+            className="px-4 py-2 text-sm"
           >
             Get a Free Quote
-          </Link>
+          </AccentButtonLink>
         </div>
 
-        <MobileNav navLinks={navLinks} phone={phone} />
+        <MobileNav navLinks={navLinks} phone={contactInfo.phone} phoneHref={phoneHref} />
       </Container>
     </header>
   );

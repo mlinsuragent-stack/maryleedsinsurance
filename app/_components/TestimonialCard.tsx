@@ -9,7 +9,6 @@ export type Testimonial = {
   quote: string;
   name: string;
   descriptor?: string;
-  featured?: boolean;
   image?: TestimonialImage;
 };
 

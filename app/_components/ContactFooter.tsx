@@ -1,10 +1,5 @@
+import { contactInfo as contact, phoneHref } from "./contact-info";
 import { Container } from "./Container";
-
-const contact = {
-  phone: "970-985-5845",
-  email: "Mary@maryleedsinsurance.com",
-  address: "15614 E Otero Ave, Centennial, CO 80112",
-};
 
 const linkClassName =
   "rounded-sm underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary";
@@ -17,7 +12,7 @@ export function ContactFooter() {
           Let&apos;s talk about your coverage
         </h2>
         <div className="mt-6 flex flex-col gap-2 text-sm text-white sm:flex-row sm:gap-8 sm:text-base">
-          <a href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`} className={linkClassName}>
+          <a href={phoneHref} className={linkClassName}>
             {contact.phone}
           </a>
           <a href={`mailto:${contact.email}`} className={linkClassName}>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactFooter } from "../_components/ContactFooter";
 import { ContactForm } from "../_components/ContactForm";
+import { contactInfo as contact, phoneHref } from "../_components/contact-info";
 import { Container } from "../_components/Container";
 import { Header } from "../_components/Header";
 import { SectionHeading } from "../_components/SectionHeading";
@@ -9,12 +10,6 @@ export const metadata: Metadata = {
   title: "Contact | Mary Leeds Insurance",
   description:
     "Get in touch with Mary Leeds Insurance to talk about life, small business, property and casualty, or commercial coverage.",
-};
-
-const contact = {
-  phone: "970-985-5845",
-  email: "Mary@maryleedsinsurance.com",
-  address: "15614 E Otero Ave, Centennial, CO 80112",
 };
 
 const licensedStates = ["Colorado", "Arizona", "Texas"];
@@ -55,7 +50,7 @@ export default function ContactPage() {
                     <dt className="font-medium text-gray-900">Phone</dt>
                     <dd className="mt-1">
                       <a
-                        href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`}
+                        href={phoneHref}
                         className={sidebarLinkClassName}
                       >
                         {contact.phone}

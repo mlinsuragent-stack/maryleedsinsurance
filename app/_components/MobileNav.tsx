@@ -2,14 +2,17 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { AccentButtonLink } from "./AccentButtonLink";
 
 type NavLink = {
   href: string;
   label: string;
 };
 
+// Panel sits on primary-deep (the gradient's dark end): surface links
+// 10.02:1, 7.49:1 on the white/10 hover fill; white focus ring 11.93:1.
 const menuLinkClassName =
-  "block rounded-sm px-2 py-3 text-base font-medium text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary";
+  "block rounded-sm px-2 py-3 text-base font-medium text-surface transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-deep";
 
 /**
  * Hamburger toggle + slide-down panel for small screens. This is the only
@@ -19,9 +22,11 @@ const menuLinkClassName =
 export function MobileNav({
   navLinks,
   phone,
+  phoneHref,
 }: {
   navLinks: NavLink[];
   phone: string;
+  phoneHref: string;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -32,7 +37,7 @@ export function MobileNav({
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
-        className="inline-flex h-11 w-11 items-center justify-center rounded-md p-2 text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-md p-2 text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark"
       >
         <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
         <svg
@@ -56,7 +61,7 @@ export function MobileNav({
       {open && (
         <div
           id="mobile-nav-panel"
-          className="absolute inset-x-0 top-full border-t border-white/10 bg-primary px-4 pb-6 pt-2 shadow-lg"
+          className="absolute inset-x-0 top-full border-t border-white/10 bg-primary-deep px-4 pb-6 pt-2 shadow-lg"
         >
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
@@ -72,7 +77,7 @@ export function MobileNav({
             ))}
             <li>
               <a
-                href={`tel:${phone.replace(/[^+\d]/g, "")}`}
+                href={phoneHref}
                 onClick={() => setOpen(false)}
                 className={menuLinkClassName}
               >
@@ -80,13 +85,14 @@ export function MobileNav({
               </a>
             </li>
             <li className="mt-2">
-              <Link
+              <AccentButtonLink
                 href="/contact"
+                surface="deep"
                 onClick={() => setOpen(false)}
-                className="inline-flex w-full items-center justify-center rounded-md bg-accent px-4 py-3 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                className="w-full px-4 py-3 text-sm"
               >
                 Get a Free Quote
-              </Link>
+              </AccentButtonLink>
             </li>
           </ul>
         </div>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { AccentButtonLink } from "../../_components/AccentButtonLink";
 import { Container } from "../../_components/Container";
 import { FadeInSection } from "../../_components/motion/FadeInSection";
 import { SectionHeading } from "../../_components/SectionHeading";
@@ -81,12 +81,13 @@ export function ProfessionalSection() {
               </ul>
             </div>
 
-            <Link
+            <AccentButtonLink
               href="/contact"
-              className="mt-8 inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              surface="light"
+              className="mt-8 px-6 py-3 text-sm"
             >
               Get in touch with Mary
-            </Link>
+            </AccentButtonLink>
           </div>
 
           <div className="w-full max-w-xs sm:max-w-sm lg:col-start-1 lg:row-start-2 lg:max-w-none">

@@ -7,8 +7,8 @@ import { TestimonialCard, type Testimonial } from "./TestimonialCard";
 
 // Real client testimonials (source: content/testimonials.md). Attribution is
 // first name + last initial only; never add client emails or phone numbers.
-// Stacey B. is listed first and featured: hers is the only farm & ranch
-// testimonial, which matches the agency's ag/commercial target market.
+// Stacey B. is listed first: hers is the only farm & ranch testimonial,
+// which matches the agency's ag/commercial target market.
 const testimonials: Testimonial[] = [
   {
     quote:
@@ -16,7 +16,6 @@ const testimonials: Testimonial[] = [
     name: "Stacey B.",
     image: { src: "/images/avatars/stacey-b.jpg" },
     descriptor: "client for 10 years",
-    featured: true,
   },
   {
     quote:
@@ -44,16 +43,11 @@ const testimonials: Testimonial[] = [
 // keeps all cards the same height.
 // Translucent card on the dark teal band: white/7 over primary-dark is the
 // worst-case text background (~#1b6463 if it were 8%, a conservative bound for the real 7%); see TestimonialCard colors.
-const baseCardClassName =
-  "flex h-full w-80 shrink-0 flex-col rounded-lg border border-surface/20 bg-white/7 p-6 shadow-sm transition-shadow duration-200 hover:shadow-lg sm:w-96";
-
-// Featured card gets an accent top border to stand out in the marquee
-// (border-t-accent so the other three sides keep the subtle mint border).
-function getCardClassName(testimonial: Testimonial): string {
-  return testimonial.featured
-    ? `${baseCardClassName} border-t-4 border-t-accent`
-    : baseCardClassName;
-}
+// Every card gets an accent top border (border-t-accent so the other three
+// sides keep the subtle mint border). It only adds height, so the marquee's
+// horizontal loop math is unaffected.
+const cardClassName =
+  "flex h-full w-80 shrink-0 flex-col rounded-lg border border-surface/20 border-t-4 border-t-accent bg-white/7 p-6 shadow-sm transition-shadow duration-200 hover:shadow-lg sm:w-96";
 
 /**
  * Auto-scrolling row of testimonial cards on the dark teal band, same
@@ -90,7 +84,7 @@ export function Testimonials() {
           <ul className="animate-marquee marquee-thirds flex list-none items-stretch gap-6 px-3">
             {testimonials.map((testimonial) => (
               <li key={testimonial.name}>
-                <HoverCard className={getCardClassName(testimonial)}>
+                <HoverCard className={cardClassName}>
                   <TestimonialCard testimonial={testimonial} />
                 </HoverCard>
               </li>
@@ -101,7 +95,7 @@ export function Testimonials() {
                   key={`${testimonial.name}-duplicate-${copy}`}
                   aria-hidden="true"
                 >
-                  <div className={getCardClassName(testimonial)}>
+                  <div className={cardClassName}>
                     <TestimonialCard testimonial={testimonial} />
                   </div>
                 </li>

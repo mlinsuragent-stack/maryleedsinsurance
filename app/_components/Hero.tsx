@@ -1,8 +1,15 @@
 import Image from "next/image";
-import Link from "next/link";
+import { AccentButtonLink } from "./AccentButtonLink";
 import { Container } from "./Container";
 import { FadeInSection } from "./motion/FadeInSection";
 import { HoverCard } from "./motion/HoverCard";
+
+const trustChips = [
+  "Licensed in CO, AZ & TX",
+  "30+ Carrier Partners",
+  "Family-Owned Colorado Business",
+  "Mid-Market & Ag Specialists",
+];
 
 export function Hero() {
   return (
@@ -29,14 +36,31 @@ export function Hero() {
             </p>
             <div className="mt-8">
               <HoverCard className="inline-block">
-                <Link
+                <AccentButtonLink
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-semibold text-gray-900 shadow-sm transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                  surface="primary"
+                  className="px-6 py-3 text-base"
                 >
                   Get a Free Quote
-                </Link>
+                </AccentButtonLink>
               </HoverCard>
             </div>
+            {/* Outlined trust chips. Text is white, not surface: the chips
+                sit on the gradient's primary end, where surface is only
+                4.28:1 but white is 5.09:1 (WCAG AA). */}
+            <ul
+              aria-label="Why clients trust Mary Leeds Insurance"
+              className="mt-6 flex flex-wrap gap-2"
+            >
+              {trustChips.map((chip) => (
+                <li
+                  key={chip}
+                  className="rounded-full border border-surface/40 px-3 py-1 text-xs font-medium text-white sm:text-sm"
+                >
+                  {chip}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="w-full max-w-md shrink-0 xl:max-w-lg">
             {/* 3:4 portrait in a square frame: the width always fills, so
