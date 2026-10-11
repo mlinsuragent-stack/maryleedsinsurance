@@ -66,7 +66,7 @@ export function Hero() {
           </div>
           <div className="w-full max-w-110 shrink-0">
             {/* 3:4 frame for a 3:4 portrait (1932x2576), so object-cover
-                crops almost nothing (~1px per side from the 4px border-box
+                crops almost nothing (~0.5px per side from the 2px border-box
                 border). The horse's ear tips touch the photo's top edge and
                 Mary's face runs to its right edge, so any frame taller or
                 wider than 3:4 would cut one of them; object-top keeps the
@@ -79,7 +79,7 @@ export function Hero() {
               width={1932}
               height={2576}
               sizes="(min-width: 472px) 440px, calc(100vw - 2rem)"
-              className="aspect-3/4 w-full rounded-lg border-4 border-saddle object-cover object-top shadow-sm"
+              className="aspect-3/4 w-full rounded-lg border-2 border-saddle object-cover object-top shadow-sm"
               priority
             />
           </div>

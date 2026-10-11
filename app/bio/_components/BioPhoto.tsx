@@ -22,6 +22,7 @@ export function BioPhoto({
   sizes = DEFAULT_SIZES,
   priority = false,
   shape = "rounded",
+  className = "",
 }: {
   src: string;
   alt: string;
@@ -30,6 +31,8 @@ export function BioPhoto({
   sizes?: string;
   priority?: boolean;
   shape?: keyof typeof shapeClassNames;
+  /** Extra sizing classes (e.g. a fixed height or aspect override). */
+  className?: string;
 }) {
   return (
     <Image
@@ -39,7 +42,7 @@ export function BioPhoto({
       height={height}
       sizes={sizes}
       priority={priority}
-      className={`w-full object-cover ${shapeClassNames[shape]}`}
+      className={`w-full object-cover ${shapeClassNames[shape]} ${className}`}
     />
   );
 }

@@ -5,19 +5,28 @@ import { SectionHeading } from "../../_components/SectionHeading";
 import { BioParagraph } from "./BioParagraph";
 import { BioPhoto } from "./BioPhoto";
 
-// Photos always sit side by side: about half the viewport when stacked
-// under the text, a quarter of the max-w-6xl container on lg.
-const PERSONAL_PHOTO_SIZES = "(min-width: 1024px) 16rem, 50vw";
+// Below lg the photos stack under the text as squares (object-top keeps
+// both faces; a square shows the top 75% of each 3:4 portrait), full width
+// on phones and capped at max-w-md (448px) from sm so they don't grow to
+// ~720px squares on tablets. From lg they sit side by side, 300px tall
+// (h-75): ~212px wide at 1024, 244px once the container maxes out (1216+),
+// so the 3:4 images crop only slightly: ~7px per side at 1024, ~23px off the
+// bottom (object-top) at 1216+.
+const PERSONAL_PHOTO_SIZES =
+  "(min-width: 1024px) 244px, (min-width: 640px) 448px, calc(100vw - 2rem)";
+const PERSONAL_PHOTO_CLASS_NAME =
+  "aspect-square object-top lg:aspect-auto lg:h-75";
 
 /**
  * Personal bio (source: content/bio.md) on the mint band: text left, the
- * two photos side by side on the right from lg; photos below on mobile.
+ * two photos side by side on the right from lg, top-aligned with the text;
+ * photos stacked below on mobile.
  */
 export function PersonalSection() {
   return (
     <section className="bg-surface" aria-labelledby="personal-heading">
       <Container className="py-16 sm:py-24">
-        <FadeInSection className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <FadeInSection className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
           <div className="max-w-3xl">
             <SectionHeading id="personal-heading">
               A life rooted in family, faith &amp; service
@@ -63,13 +72,14 @@ export function PersonalSection() {
             </BioParagraph>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+          <div className="mx-auto grid w-full max-w-md grid-cols-1 gap-4 sm:gap-6 lg:max-w-none lg:grid-cols-2">
             <BioPhoto
               src="/images/mary-horse-buckskin.jpg"
               alt="Selfie of Mary Leeds in a USA cap, smiling beside a buckskin horse in a teal rope halter under a blue sky"
               width={1932}
               height={2576}
               sizes={PERSONAL_PHOTO_SIZES}
+              className={PERSONAL_PHOTO_CLASS_NAME}
             />
             <BioPhoto
               src="/images/mary-daughter-selfie.jpg"
@@ -77,6 +87,7 @@ export function PersonalSection() {
               width={1932}
               height={2576}
               sizes={PERSONAL_PHOTO_SIZES}
+              className={PERSONAL_PHOTO_CLASS_NAME}
             />
           </div>
         </FadeInSection>

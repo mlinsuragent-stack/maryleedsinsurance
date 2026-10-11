@@ -25,6 +25,7 @@ export default function ReviewsPage() {
       <main id="main-content" className="flex-1">
         <PageHeader
           title="Share your experience"
+          align="center"
           subline="If Mary helped you find the right coverage or navigate a claim, we'd love to hear about it."
         />
         <Container className="pb-16 sm:pb-24">

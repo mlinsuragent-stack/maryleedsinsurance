@@ -10,7 +10,8 @@ import { Container } from "./Container";
  *
  * `children` is an optional aside (e.g. a portrait); when present the
  * header becomes two columns from lg and stacks below the text on mobile.
- * `accentRule` adds the saddle rule bar under the (left-aligned) h1.
+ * `accentRule` adds the saddle rule bar under the h1. `align="center"`
+ * centers the text block (and the rule); meant for headers without an aside.
  */
 export function PageHeader({
   eyebrow,
@@ -18,12 +19,14 @@ export function PageHeader({
   subline,
   children,
   accentRule = false,
+  align = "start",
 }: {
   eyebrow?: string;
   title: string;
   subline: ReactNode;
   children?: ReactNode;
   accentRule?: boolean;
+  align?: "start" | "center";
 }) {
   return (
     <section
@@ -35,7 +38,9 @@ export function PageHeader({
           children ? "grid items-center gap-10 lg:grid-cols-2 lg:gap-16" : ""
         }`}
       >
-        <div className="max-w-2xl">
+        <div
+          className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}
+        >
           {eyebrow && (
             <p className="mb-4 inline-flex rounded-full bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-primary-dark shadow-sm sm:text-sm">
               {eyebrow}
@@ -49,7 +54,7 @@ export function PageHeader({
           </h1>
           {/* mt-4, not the h2s' mt-3: this h1's tighter leading (0-2px
               half-leading vs 3-4px on h2) leaves the same ~16px visible gap. */}
-          {accentRule && <AccentRule className="mt-4" />}
+          {accentRule && <AccentRule align={align} className="mt-4" />}
           <p className="mt-4 text-lg leading-relaxed text-gray-700 sm:text-xl">
             {subline}
           </p>
