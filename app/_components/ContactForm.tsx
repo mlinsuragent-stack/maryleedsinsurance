@@ -61,9 +61,9 @@ export function ContactForm() {
         role="status"
         className="rounded-lg border border-secondary/30 bg-surface p-6 text-gray-700"
       >
-        <h3 className="font-heading text-lg font-semibold text-primary">
+        <h2 className="font-heading text-lg font-semibold text-primary-dark">
           Thanks for reaching out
-        </h3>
+        </h2>
         <p className="mt-2 text-sm leading-relaxed sm:text-base">
           Your message has been received. Mary will get back to you as soon
           as possible.

@@ -61,7 +61,7 @@ export function ReviewForm() {
         role="status"
         className="rounded-lg border border-secondary/30 bg-surface p-6 text-gray-700"
       >
-        <h3 className="font-heading text-lg font-semibold text-primary">
+        <h3 className="font-heading text-lg font-semibold text-primary-dark">
           Thanks for the review
         </h3>
         <p className="mt-2 text-sm leading-relaxed sm:text-base">

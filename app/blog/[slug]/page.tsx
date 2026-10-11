@@ -6,7 +6,7 @@ import { ContactFooter } from "../../_components/ContactFooter";
 import { Container } from "../../_components/Container";
 import { Header } from "../../_components/Header";
 import { FadeInSection } from "../../_components/motion/FadeInSection";
-import { blogPosts, getBlogPostBySlug } from "../data";
+import { blogPosts, getBlogPostBySlug, getPostLabel } from "../data";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -62,7 +62,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 &larr; Back to blog
               </Link>
 
-              <p className="mt-6 text-xs font-medium uppercase tracking-wide text-gray-600">
+              <p className="mt-6 text-xs font-semibold uppercase tracking-wide text-secondary-dark">
+                {getPostLabel(post)}
+              </p>
+              <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600">
                 {formatDate(post.date)}
               </p>
               <h1

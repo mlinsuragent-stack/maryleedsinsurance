@@ -1,37 +1,21 @@
-import { AccentButtonLink } from "../../_components/AccentButtonLink";
 import { Container } from "../../_components/Container";
 import { FadeInSection } from "../../_components/motion/FadeInSection";
 import { SectionHeading } from "../../_components/SectionHeading";
 import { BioParagraph } from "./BioParagraph";
 import { BioPhoto } from "./BioPhoto";
 
-const licensedStates = ["Colorado", "Arizona", "Texas"];
-
 /**
- * Professional bio (source: content/bio.md). Three-cell grid so that on
- * mobile the order is portrait, text, office photo; on large screens both
- * photos stack in the left column beside the text. The `auto 1fr` rows keep
- * the portrait row at its natural height so extra text height falls below
- * the office photo instead of opening a gap between the two photos.
+ * Professional bio (source: content/bio.md): text left, office photo right
+ * from lg; stacked (text, then photo) on mobile.
  */
 export function ProfessionalSection() {
   return (
-    <section className="bg-white" aria-labelledby="bio-heading">
+    <section className="bg-white" aria-labelledby="professional-heading">
       <Container className="py-16 sm:py-24">
-        <FadeInSection className="grid gap-10 lg:grid-cols-3 lg:grid-rows-[auto_1fr] lg:items-start">
-          <div className="w-full max-w-xs sm:max-w-sm lg:col-start-1 lg:row-start-1 lg:max-w-none">
-            <BioPhoto
-              src="/images/mary-cowgirl-portrait.jpg"
-              alt="Mary Leeds smiling outdoors in a black tank top printed with the word COWGIRL, with a sunny event lawn behind her"
-              width={1932}
-              height={2576}
-              priority
-            />
-          </div>
-
-          <div className="max-w-3xl lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            <SectionHeading id="bio-heading" as="h1">
-              About Mary Leeds
+        <FadeInSection className="grid gap-10 lg:grid-cols-5 lg:items-center lg:gap-16">
+          <div className="max-w-3xl lg:col-span-3">
+            <SectionHeading id="professional-heading">
+              The professional
             </SectionHeading>
             <BioParagraph>
               Born and raised in Colorado, Mary is a lifelong cowgirl with
@@ -64,33 +48,9 @@ export function ProfessionalSection() {
               others, Mary believes insurance should be understandable,
               accessible, and tailored to each person&apos;s unique situation.
             </BioParagraph>
-
-            <div className="mt-8 rounded-lg border border-secondary/30 bg-surface p-6">
-              <h3 className="font-heading text-base font-semibold text-primary">
-                Licensed in
-              </h3>
-              <ul className="mt-3 flex flex-wrap gap-3">
-                {licensedStates.map((state) => (
-                  <li
-                    key={state}
-                    className="rounded-md bg-white px-4 py-2 text-sm font-medium text-primary shadow-sm"
-                  >
-                    {state}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <AccentButtonLink
-              href="/contact"
-              surface="light"
-              className="mt-8 px-6 py-3 text-sm"
-            >
-              Get in touch with Mary
-            </AccentButtonLink>
           </div>
 
-          <div className="w-full max-w-xs sm:max-w-sm lg:col-start-1 lg:row-start-2 lg:max-w-none">
+          <div className="w-full max-w-xs sm:max-w-sm lg:col-span-2 lg:max-w-none">
             <BioPhoto
               src="/images/mary-office-dogs.jpg"
               alt="Mary Leeds smiling at her office desk, with one small dog tucked in a bed beneath it and another sitting beside it"

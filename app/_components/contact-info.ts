@@ -7,3 +7,9 @@ export const contactInfo = {
 
 /** `tel:` href for the agency phone number (digits only, e.g. tel:9709855845). */
 export const phoneHref = `tel:${contactInfo.phone.replace(/[^+\d]/g, "")}`;
+
+/** States Mary is licensed in, shared by the bio and contact pages. */
+export const licensedStates = ["Colorado", "Arizona", "Texas"];
+
+/** "Colorado, Arizona & Texas" */
+export const licensedStatesText = `${licensedStates.slice(0, -1).join(", ")} & ${licensedStates[licensedStates.length - 1]}`;

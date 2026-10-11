@@ -5,6 +5,8 @@
 export type BlogPost = {
   slug: string;
   title: string;
+  /** Short topic label shown above the title, e.g. "Commercial". */
+  category: string;
   excerpt: string;
   date: string;
   imageSeed: string;
@@ -16,6 +18,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "understanding-commercial-insurance-basics",
     title: "Understanding Commercial Insurance: A Plain-English Guide",
+    category: "Commercial",
     excerpt:
       "Commercial policies are full of jargon. Here's a straightforward breakdown of the coverage types every business owner should know before renewal season.",
     date: "2026-06-02",
@@ -32,6 +35,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "navigating-the-claims-process",
     title: "What to Expect When You File an Insurance Claim",
+    category: "Claims",
     excerpt:
       "Filing a claim can feel overwhelming, especially for a business. Here's what actually happens after you report a loss, and how to keep the process moving.",
     date: "2026-05-14",
@@ -48,6 +52,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "insurance-for-agricultural-businesses",
     title: "Insurance Considerations for Agricultural Businesses",
+    category: "Agriculture",
     excerpt:
       "Farm and ranch operations face risks that standard commercial policies weren't built for. Here's what to think through before your next renewal.",
     date: "2026-04-20",
@@ -62,6 +67,22 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+const WORDS_PER_MINUTE = 200;
+
+/** Estimated read time in whole minutes (~200 wpm over the body, min 1). */
+export function getReadTimeMinutes(post: BlogPost): number {
+  const wordCount = post.body
+    .join(" ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
+}
+
+/** Card/post label, e.g. "Commercial · 3 min read". */
+export function getPostLabel(post: BlogPost): string {
+  return `${post.category} · ${getReadTimeMinutes(post)} min read`;
+}
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
