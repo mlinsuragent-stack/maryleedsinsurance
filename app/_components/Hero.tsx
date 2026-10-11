@@ -12,8 +12,10 @@ const trustChips = [
 ];
 
 export function Hero() {
+  // Vertical gradient ending on primary-dark: the whole bottom edge then
+  // matches the carrier band's from-primary-dark top, so there's no seam.
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-gray-950">
+    <section className="relative overflow-hidden bg-linear-to-b from-primary via-primary to-primary-dark">
       {/* Subtle drifting dot pattern, pure CSS keyframes (see globals.css). */}
       <div
         aria-hidden="true"
