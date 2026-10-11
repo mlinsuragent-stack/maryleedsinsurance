@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# source material (client full names) — never commit
+/content/
+
 # sandbox workaround files (not project content)
 .bash_profile
 .bashrc

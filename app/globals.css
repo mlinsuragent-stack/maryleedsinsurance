@@ -51,6 +51,39 @@ body {
 }
 
 /*
+ * Variant for a list rendered three times (original + two aria-hidden
+ * copies), used when one copy is narrower than wide viewports (e.g. the
+ * 4-card testimonials row). Scrolls exactly one copy: -100%/3. Must stay
+ * above the reduced-motion block so `animation: none` there still wins.
+ */
+@keyframes marquee-scroll-third {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+.marquee-thirds {
+  animation-name: marquee-scroll-third;
+  /* Slower than the carrier row so the long testimonial quotes stay readable. */
+  animation-duration: 60s;
+}
+
+/*
+ * Pause on hover/focus. Must live here, not as a Tailwind
+ * `group-hover:[animation-play-state:paused]` utility: Tailwind v4 utilities
+ * sit in a cascade layer, and the unlayered `animation` shorthand above
+ * (which resets play-state to running) beats any layered rule. The
+ * MarqueePauseToggle's inline style still overrides this when paused.
+ */
+.marquee-viewport:hover .animate-marquee,
+.marquee-viewport:focus-within .animate-marquee {
+  animation-play-state: paused;
+}
+
+/*
  * Reduced motion: disable both animations outright and fall back to a real
  * static layout rather than freezing mid-scroll. The marquee row wraps
  * normally and the aria-hidden duplicate items (only present for the loop)
@@ -73,7 +106,9 @@ body {
     flex-wrap: wrap;
   }
 
-  .animate-marquee [aria-hidden="true"] {
+  /* Direct children only, so decorative aria-hidden elements inside a
+   * visible item (e.g. testimonial initials avatars) still render. */
+  .animate-marquee > [aria-hidden="true"] {
     display: none;
   }
 }

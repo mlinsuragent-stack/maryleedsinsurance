@@ -43,7 +43,7 @@ export function CarrierMarquee() {
       </Container>
       <MarqueePauseToggle label="carrier partner logos">
         <div className="marquee-viewport group mt-6">
-          <ul className="animate-marquee flex list-none items-center gap-4 px-4 group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]">
+          <ul className="animate-marquee flex list-none items-center gap-4 px-2 group-hover:[animation-play-state:paused] group-focus-within:[animation-play-state:paused]">
             {carriers.map((carrier) => (
               <li key={carrier} className={badgeClassName}>
                 {carrier}
