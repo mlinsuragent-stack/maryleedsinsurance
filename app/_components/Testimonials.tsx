@@ -14,6 +14,7 @@ const testimonials: Testimonial[] = [
     quote:
       "Mary has worked with me on home and auto as well as farm and ranch for the past 10 years. She worked diligently to make sure we always had the best for what we were needing at a reasonable price. She will work hard to meet your needs.",
     name: "Stacey B.",
+    image: { src: "/images/avatars/stacey-b.jpg" },
     descriptor: "client for 10 years",
     featured: true,
   },
@@ -21,12 +22,14 @@ const testimonials: Testimonial[] = [
     quote:
       "I have known and worked with Mary for over 10 years. She is professional, caring, and determined to help you find the best insurance policies for your needs. She patiently explains terminology you might not understand or new concepts in the industry. She invests time in searching to put your priorities first. She builds lasting links with clients and work partners. I would definitely recommend working with her if you are looking for a person who is caring and will put your insurance requirements first.",
     name: "Sandra J.",
+    image: { src: "/images/avatars/sandra-j.jpg" },
     descriptor: "client for over 10 years",
   },
   {
     quote:
       "I've worked with Mary for over 15 years now. I really appreciate the amount of time she spends looking at multiple companies to get me the best insurance rates possible. She is very good at explaining the details of any given policy. She lets me know what coverage levels are ideal for my situation. I highly recommend working with Mary for your insurance needs.",
     name: "Eric H.",
+    image: { src: "/images/avatars/eric-h.jpg" },
     descriptor: "client for over 15 years",
   },
   {

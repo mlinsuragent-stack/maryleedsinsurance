@@ -55,3 +55,15 @@ next-env.d.ts
 .vscode/
 .mcp.json
 .gitconfig
+
+# unused source photos — full-size client originals stay out of public/ deploys
+/public/images/stacey-b.jpg
+/public/images/eric-h.jpg
+/public/images/sandra-j.webp
+/public/images/mary-horse-palomino.jpg
+
+# .claude local files (not project content)
+.claude/settings.local.json
+.claude/launch.json
+.claude/loop.md
+.claude/scheduled_tasks.json

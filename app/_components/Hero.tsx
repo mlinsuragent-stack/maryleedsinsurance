@@ -38,14 +38,16 @@ export function Hero() {
               </HoverCard>
             </div>
           </div>
-          <div className="w-full max-w-md shrink-0 lg:max-w-lg">
-            {/* PLACEHOLDER: replace with real photo */}
+          <div className="w-full max-w-md shrink-0 xl:max-w-lg">
+            {/* Portrait photo shown as a square, anchored to the top so her
+                face and cap stay in frame. */}
             <Image
-              src="https://picsum.photos/seed/hero/1200/800"
-              alt="A Colorado family sitting down with their insurance agent to review coverage options"
-              width={1200}
-              height={800}
-              className="w-full rounded-lg object-cover shadow-sm"
+              src="/images/mary-golf.jpg"
+              alt="Mary Leeds smiling in a white Colorado Rockies cap and golf shirt, seated in a golf cart on a sunny golf course"
+              width={1932}
+              height={2576}
+              sizes="(min-width: 1280px) 32rem, (min-width: 480px) 28rem, calc(100vw - 2rem)"
+              className="aspect-square w-full rounded-lg object-cover object-top shadow-sm"
               priority
             />
           </div>

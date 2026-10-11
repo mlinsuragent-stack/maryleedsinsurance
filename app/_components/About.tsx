@@ -9,23 +9,25 @@ export function About() {
       <Container className="py-16 sm:py-24">
         <FadeInSection className="flex flex-col gap-10 lg:flex-row lg:items-center">
           <div className="w-full max-w-xs shrink-0 sm:max-w-sm">
-            {/* PLACEHOLDER: replace with real photo */}
+            {/* Square crop anchored to the top keeps all three faces in frame. */}
             <Image
-              src="https://picsum.photos/seed/mary/600/600"
-              alt="Mary Leeds, licensed insurance agent and owner of Mary Leeds Insurance"
-              width={600}
-              height={600}
-              className="w-full rounded-lg object-cover shadow-sm"
+              src="/images/mary-daughter-corgi-bw.jpg"
+              alt="Black-and-white studio portrait of Mary Leeds standing behind her daughter, who is holding a smiling fluffy corgi"
+              width={1696}
+              height={2545}
+              sizes="(min-width: 640px) 24rem, 20rem"
+              className="aspect-square w-full rounded-lg object-cover object-top shadow-sm"
             />
           </div>
           <div className="max-w-3xl">
             <SectionHeading id="about-heading">Meet Mary Leeds</SectionHeading>
             <p className="mt-6 text-base leading-relaxed text-gray-700 sm:text-lg">
               Mary is a Colorado native and the owner of this women-owned
-              insurance agency. She&apos;s a mother of three, a quarter horse
-              breeder, and a lifelong dog lover who believes insurance should
-              feel less like fine print and more like a conversation with
-              someone who has your back.
+              insurance agency. A lifelong cowgirl, she raised her daughters
+              as a single mother, has owned several AQHA horses, and rescues
+              horses and dogs. She believes insurance should feel less like
+              fine print and more like a conversation with someone who has
+              your back.
             </p>
             <p className="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg">
               That same care shows up in how she works with clients &mdash;
