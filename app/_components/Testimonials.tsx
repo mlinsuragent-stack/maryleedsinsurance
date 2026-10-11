@@ -42,30 +42,39 @@ const testimonials: Testimonial[] = [
 // Fixed card width with normally wrapping text so the longer real quotes
 // grow the card vertically instead of overflowing; the `items-stretch` row
 // keeps all cards the same height.
+// Translucent card on the dark teal band: white/7 over primary-dark is the
+// worst-case text background (~#1b6463 if it were 8%, a conservative bound for the real 7%); see TestimonialCard colors.
 const baseCardClassName =
-  "flex h-full w-80 shrink-0 flex-col rounded-lg bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-lg sm:w-96";
+  "flex h-full w-80 shrink-0 flex-col rounded-lg border border-surface/20 bg-white/7 p-6 shadow-sm transition-shadow duration-200 hover:shadow-lg sm:w-96";
 
-// Featured card gets an accent top border to stand out in the marquee.
+// Featured card gets an accent top border to stand out in the marquee
+// (border-t-accent so the other three sides keep the subtle mint border).
 function getCardClassName(testimonial: Testimonial): string {
   return testimonial.featured
-    ? `${baseCardClassName} border-t-4 border-accent`
+    ? `${baseCardClassName} border-t-4 border-t-accent`
     : baseCardClassName;
 }
 
 /**
- * Auto-scrolling row of testimonial cards, same pure-CSS marquee pattern as
- * CarrierMarquee (see `.animate-marquee` / `.marquee-viewport` in
- * globals.css), with the `.marquee-thirds` variant: list rendered three times
- * for a seamless loop on wide screens, copies marked aria-hidden, pauses on hover/focus and via the keyboard-focusable
- * `MarqueePauseToggle` button, and falls back to a static wrapped row with
- * no JS under prefers-reduced-motion.
+ * Auto-scrolling row of testimonial cards on the dark teal band, same
+ * pure-CSS marquee pattern as CarrierMarquee (see `.animate-marquee` /
+ * `.marquee-viewport` / `.marquee-fade` in globals.css), with the
+ * `.marquee-thirds` variant: list rendered three times for a seamless loop
+ * on wide screens, copies marked aria-hidden, pauses on hover/focus and via
+ * the keyboard-focusable `MarqueePauseToggle` ghost button (absolutely
+ * positioned in the band's bottom-right corner, hence `relative` on the
+ * section), and falls back to a static wrapped, unfaded row with no JS
+ * under prefers-reduced-motion.
  */
 export function Testimonials() {
   return (
-    <section className="bg-surface" aria-labelledby="testimonials-heading">
+    <section
+      className="relative bg-linear-to-b from-primary-dark to-primary-deep"
+      aria-labelledby="testimonials-heading"
+    >
       <Container className="pt-16 sm:pt-24">
         <FadeInSection>
-          <SectionHeading id="testimonials-heading">
+          <SectionHeading id="testimonials-heading" tone="inverse">
             What clients say
           </SectionHeading>
         </FadeInSection>
@@ -73,7 +82,7 @@ export function Testimonials() {
       <MarqueePauseToggle label="client testimonials">
         {/* pt-4 leaves room inside overflow-hidden for the HoverCard scale
             and hover shadow, which were clipped at the viewport's top edge. */}
-        <FadeInSection className="marquee-viewport group mt-6 pt-4 pb-16 sm:pb-24">
+        <FadeInSection className="marquee-viewport marquee-fade mt-6 pt-4 pb-16 sm:pb-24">
           {/* Seamless loop: px-3 must stay exactly half of gap-6 so one
               copy (cards + gaps) is exactly 1/3 of the track width.
               Three copies (two aria-hidden) so 4 cards cover wide screens

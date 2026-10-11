@@ -45,9 +45,18 @@ body {
   overflow: hidden;
 }
 
+/*
+ * Edge fade for a marquee viewport: content fades out over the outer ~8% on
+ * each side instead of being hard-clipped. Removed under reduced motion.
+ */
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
 .animate-marquee {
   width: max-content;
-  animation: marquee-scroll 40s linear infinite;
+  animation: marquee-scroll 50s linear infinite;
 }
 
 /*
@@ -67,7 +76,7 @@ body {
 
 .marquee-thirds {
   animation-name: marquee-scroll-third;
-  /* Slower than the carrier row so the long testimonial quotes stay readable. */
+  /* Slower than the carrier row (50s) so the long testimonial quotes stay readable. */
   animation-duration: 60s;
 }
 
@@ -97,6 +106,11 @@ body {
 
   .marquee-viewport {
     overflow: visible;
+  }
+
+  .marquee-fade {
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .animate-marquee {

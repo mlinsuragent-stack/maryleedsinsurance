@@ -3,7 +3,6 @@
 import { useReducedMotion } from "framer-motion";
 import { useRef, useState } from "react";
 import type { ReactNode } from "react";
-import { Container } from "../Container";
 
 /**
  * Wraps a marquee (CarrierMarquee, Testimonials) with a visible,
@@ -20,6 +19,12 @@ import { Container } from "../Container";
  * Hidden entirely under `prefers-reduced-motion`, since the marquee is
  * already static in that case (see globals.css) and the toggle would be a
  * no-op.
+ *
+ * Styled as an unobtrusive ghost button for the dark teal marquee bands. It
+ * is absolutely positioned in the bottom-right corner of the nearest
+ * positioned ancestor, so the caller's band `<section>` must be `relative`
+ * (and leave enough bottom padding for it). It comes after the marquee in
+ * DOM/tab order.
  */
 export function MarqueePauseToggle({
   children,
@@ -48,38 +53,36 @@ export function MarqueePauseToggle({
 
   return (
     <div>
-      <Container>
-        <button
-          type="button"
-          onClick={togglePaused}
-          aria-pressed={paused}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-primary/20 bg-white p-2 text-primary shadow-sm transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-        >
-          <span className="sr-only">
-            {paused ? `Play ${label}` : `Pause ${label}`}
-          </span>
-          {paused ? (
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="h-4 w-4"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          ) : (
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="h-4 w-4"
-            >
-              <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
-            </svg>
-          )}
-        </button>
-      </Container>
       <div ref={viewportRef}>{children}</div>
+      <button
+        type="button"
+        onClick={togglePaused}
+        aria-pressed={paused}
+        className="absolute bottom-2 right-2 inline-flex h-8.5 w-8.5 items-center justify-center rounded-full border border-white/30 bg-transparent text-white opacity-50 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary-deep sm:bottom-3 sm:right-3"
+      >
+        <span className="sr-only">
+          {paused ? `Play ${label}` : `Pause ${label}`}
+        </span>
+        {paused ? (
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-3.5 w-3.5"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        ) : (
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="h-3.5 w-3.5"
+          >
+            <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+          </svg>
+        )}
+      </button>
     </div>
   );
 }

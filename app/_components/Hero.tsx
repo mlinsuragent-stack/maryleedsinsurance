@@ -39,11 +39,13 @@ export function Hero() {
             </div>
           </div>
           <div className="w-full max-w-md shrink-0 xl:max-w-lg">
-            {/* Portrait photo shown as a square, anchored to the top so her
-                face and cap stay in frame. */}
+            {/* 3:4 portrait in a square frame: the width always fills, so
+                only the vertical position matters. object-top keeps the
+                horse's ear tips (at the photo's top edge) plus Mary's cap
+                and face in frame; only the lower quarter is cropped. */}
             <Image
-              src="/images/mary-golf.jpg"
-              alt="Mary Leeds smiling in a white Colorado Rockies cap and golf shirt, seated in a golf cart on a sunny golf course"
+              src="/images/mary-horse-buckskin.jpg"
+              alt="Mary Leeds in a USA cap taking a selfie beside her buckskin quarter horse under a blue sky"
               width={1932}
               height={2576}
               sizes="(min-width: 1280px) 32rem, (min-width: 480px) 28rem, calc(100vw - 2rem)"
